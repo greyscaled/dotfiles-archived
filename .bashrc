@@ -116,23 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# alias for using git as version control on config files
-alias config='/usr/bin/git --git-dir=/home/greg/.cfg/ --work-tree=/home/greg'
-
-# adds current working directory to PATH
-export PATH=$PATH:$PWD
-
-# alias for lazy log out
-alias logoff='gnome-session-quit'
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Fancy PS1 for git directories
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-
-
-alias dl-yt-track='youtube-dl --verbose -o "~/Music/%(title)s.%(ext)s" -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 $1'
-alias docker-bash='docker exec -it $(docker ps -q) bash'
-alias docker-clean-img='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
-
