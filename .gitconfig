@@ -1,5 +1,20 @@
 [user]
-	email = vapurrmaid@pm.me
+	email = grey@coder.com
 	name = G r e y
+	signingkey = 1B933BA64CF808BD
 [core]
 	editor = vim
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@gh.coder-internal.com:"]
+	insteadOf = https://git.coder-internal.com/
+[url "git@gh.coder-internal.com:"]
+	insteadOf = https://gh.coder-internal.com/
+[mergetool]
+	prompt = false
+	keepBackup = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[commit]
+	gpgsign = true
