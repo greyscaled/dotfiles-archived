@@ -3,6 +3,7 @@
 
 # CLI Utilities
 sudo apt install curl
+sudo apt install xclip
 
 # Git
 sudo apt install git
