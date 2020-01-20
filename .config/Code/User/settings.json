@@ -4,7 +4,6 @@
   },
   "editor.fontSize": 18,
   "editor.tabSize": 2,
-  "php.suggest.basic": false,
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 1,
   "workbench.iconTheme": "vscode-icons",
