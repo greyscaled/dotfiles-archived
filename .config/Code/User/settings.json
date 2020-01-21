@@ -17,6 +17,6 @@
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Monokai Dimmed",
   "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.iconTheme": "vscode-icons"
 }
