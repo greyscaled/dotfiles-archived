@@ -4,6 +4,7 @@
 # CLI Utilities
 sudo apt install curl
 sudo apt install xclip
+sudo apt install jq
 
 # DisplayLink USB Graphics
 sudo apt install dkms
@@ -50,6 +51,11 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - # this and the following are for yarn
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install --no-install-recommends yarn
+
+# Peek (GIF Screen Recorder)
+sudo add-apt-repository ppa:peek-developers/stable
+sudo apt update
+sudo apt install peek
 
 # Vim
 sudo apt install vim
