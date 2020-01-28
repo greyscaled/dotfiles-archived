@@ -138,3 +138,5 @@ if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/p
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
+
+[[ -s "/home/greyb/.gvm/scripts/gvm" ]] && source "/home/greyb/.gvm/scripts/gvm"
