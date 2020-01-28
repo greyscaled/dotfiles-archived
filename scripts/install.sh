@@ -57,5 +57,12 @@ sudo add-apt-repository ppa:peek-developers/stable
 sudo apt update
 sudo apt install peek
 
+# Postgres (see https://wiki.postgresql.org/wiki/Apt#Quickstart)
+sudo touch /etc/apt/sources.list.d/pgdg.list  # if pkg sources are needed
+sudo apt install postgresql-common
+sudo sh /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+sudo apt update
+sudo apt install pgadmin4
+
 # Vim
 sudo apt install vim
