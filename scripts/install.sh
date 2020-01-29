@@ -31,7 +31,9 @@ sudo usermod -aG docker $USER
 newgrp docker
 
 # Git
-sudo apt install git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
 
 # Go/GVM
 sudo apt-get install curl git mercurial make binutils bison gcc build-essential
