@@ -1,70 +1,99 @@
+#!/bin/bash
+
 # It is intended that the following script may be used to automate installation
-# of programs on Ubuntu.
+# of programs. It is currently only tested on the Ubuntu:bionic platform.
+#
+# Usage: ./install.sh [-f | --full-install]
 
-# CLI Utilities
-sudo apt install curl
-sudo apt install xclip
-sudo apt install jq
+set -euo pipefail
 
-# DisplayLink USB Graphics
-sudo apt install dkms
+# If FULL_INSTALL is set to PARTIAL, then certain items are skipped. This is
+# useful for denoting items that shouldn't/can't be installed in a Docker
+# or similar environment.
+INSTALLATION_TYPE="PARTIAL"
+
+if [[ ${1-} == "-f" ]] || [[ ${1-} == "--full-install" ]]; then
+    INSTALLATION_TYPE="FULL"
+    echo "Executing a full installation"
+else
+    echo "Executing a partial installation"
+fi
+
+# Basic installations. These are either dependencies for others, or do not
+# require further actions to be taken. Must first install
+# software-properties so that add-apt-repository can be called
+apt install -y software-properties-common
+apt update
+
+add-apt-repository -y ppa:git-core/ppa
+add-apt-repository -y ppa:peek-developers/stable
+apt update
+apt upgrade
+apt install -y \
+    binutils \
+    bison \
+    build-essential \
+    curl \
+    gcc \
+    golang-go \
+    git \
+    jq \
+    make \
+    mercurial \
+    npm \
+    peek \
+    vim \
+    xclip
+
+# DisplayLink USB Graphics requires dkms
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    apt install -y dkms
+fi
 
 # Docker
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-sudo usermod -aG docker $USER
-newgrp docker
-
-# Git
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt-get update
-sudo apt-get install git
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    apt install -y apt-transport-https ca-certificates gnupg-agent
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) \
+        stable"
+    apt update
+    apt install -y docker-ce docker-ce-cli containerd.io
+    
+    # following creates a docker user so that sudo is not required
+    usermod -aG docker $USER
+    newgrp docker
+fi
 
 # Go/GVM
-sudo apt-get install curl git mercurial make binutils bison gcc build-essential
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+fi
 
 # Kubernetes
-sudo apt-get update && sudo apt-get install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
-sudo apt-get install -y kubectl
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    apt-get update && apt-get install -y apt-transport-https
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+    apt-get update
+    apt-get install -y kubectl
+fi
 
-# Node
-sudo apt install npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash # installs a specific version of nvm. Should be modified.
+# NVM
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    # installs a specific version of nvm. Should be modified.
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+fi
 
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - # this and the following are for yarn
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install --no-install-recommends yarn
-
-# Peek (GIF Screen Recorder)
-sudo add-apt-repository ppa:peek-developers/stable
-sudo apt update
-sudo apt install peek
+# Yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt update && apt install --no-install-recommends yarn
 
 # Postgres (see https://wiki.postgresql.org/wiki/Apt#Quickstart)
-sudo touch /etc/apt/sources.list.d/pgdg.list  # if pkg sources are needed
-sudo apt install postgresql-common
-sudo sh /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
-sudo apt update
-sudo apt install pgadmin4
-
-# Vim
-sudo apt install vim
+touch /etc/apt/sources.list.d/pgdg.list  # if pkg sources are needed
+apt install -y postgresql-common
+sh /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+apt update
+apt install pgadmin4
