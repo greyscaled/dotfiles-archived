@@ -86,14 +86,16 @@ if [ "$INSTALLATION_TYPE" == "FULL" ]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 fi
 
+# Postgres (see https://wiki.postgresql.org/wiki/Apt#Quickstart)
+if [ "$INSTALLATION_TYPE" == "FULL" ]; then
+    touch /etc/apt/sources.list.d/pgdg.list  # if pkg sources are needed
+    apt install -y postgresql-common
+    sh /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+    apt update
+    apt install pgadmin4
+fi
+
 # Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt update && apt install --no-install-recommends yarn
-
-# Postgres (see https://wiki.postgresql.org/wiki/Apt#Quickstart)
-touch /etc/apt/sources.list.d/pgdg.list  # if pkg sources are needed
-apt install -y postgresql-common
-sh /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
-apt update
-apt install pgadmin4
