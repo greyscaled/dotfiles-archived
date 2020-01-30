@@ -8,8 +8,8 @@
 set -euo pipefail
 
 # If FULL_INSTALL is set to PARTIAL, then certain items are skipped. This is
-# useful for denoting items that shouldn't/can't be installed in a Docker
-# or similar environment.
+# useful for denoting items that shouldn't/can't be installed in Docker,
+# CI or similar environments.
 INSTALLATION_TYPE="PARTIAL"
 
 if [[ ${1-} == "-f" ]] || [[ ${1-} == "--full-install" ]]; then
