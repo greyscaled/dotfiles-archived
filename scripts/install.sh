@@ -28,7 +28,7 @@ apt update
 add-apt-repository -y ppa:git-core/ppa
 add-apt-repository -y ppa:peek-developers/stable
 apt update
-apt upgrade
+apt upgrade -y
 apt install -y \
     binutils \
     bison \
