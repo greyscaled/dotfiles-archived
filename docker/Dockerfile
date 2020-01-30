@@ -18,9 +18,9 @@ RUN git clone --bare https://github.com/vapurrmaid/dotfiles $HOME/.cfg
 # These lines store Ubuntu defaults that conflict with upstream dotfiles in ~/.config-backup
 RUN mkdir -p .config-backup
 RUN /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout 2>&1 | \
-  egrep "\s+\." | \
-  awk {'print $1'} | \
-  xargs -I{} mv {} .config-backup/{}
+    egrep "\s+\." | \
+    awk {'print $1'} | \
+    xargs -I{} mv {} .config-backup/{}
 
 RUN /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout
 RUN ./scripts/install.sh
