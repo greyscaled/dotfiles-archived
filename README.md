@@ -2,7 +2,7 @@
 
 Configurations that should be tracked for consistency across different machines.
 
-> **Warning**: Some of these configurations may be specific to me and my credentials (such as my username)
+> :warning: **Warning**: Some of these configurations may be specific to me and my credentials (such as my username)
 
 ## Requirements
 
@@ -40,6 +40,9 @@ mkdir -p .config-backup
 /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout
 ./scripts/install.sh --full-install
 ```
+
+> :information_source: For more information on using `git clone --bare` to backup a dotfiles repository, see the following
+Atlassian article of which was used in this repository: <https://www.atlassian.com/git/tutorials/dotfiles>.
 
 ## Try It Out With Docker! :whale:
 
