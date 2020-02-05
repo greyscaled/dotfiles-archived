@@ -42,6 +42,7 @@ apt install -y \
     mercurial \
     npm \
     peek \
+    tig \
     vim \
     xclip
 
