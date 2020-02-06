@@ -130,16 +130,6 @@ export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 # Coder NAMESPACE Environment Variable
 export NAMESPACE="coder-greyb-namespace"
 
-# Add Coder Enterprise devbin to PATH
-PATH="$HOME/Code/enterprise/devbin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
-
-[[ -s "/home/greyb/.gvm/scripts/gvm" ]] && source "/home/greyb/.gvm/scripts/gvm"
-
-# The next line updates PATH to add bin
-PATH="$HOME/bin:$PATH"
+if [ -f '/home/greyb/.bash_path' ]; then
+    . $HOME/.bash_path
+fi

@@ -1,0 +1,23 @@
+# Adds ~/bini
+if [ -d '/home/greyb/bin' ]; then
+  PATH="$HOME/bin:$PATH"
+fi
+
+# Coder Enterprise devbin
+if [ -d '/home/greyb/Code/enterprise/devbin' ]; then
+  PATH="$HOME/Code/enterprise/devbin:$PATH"
+fi
+
+# Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then
+  . '/opt/google-cloud-sdk/path.bash.inc';
+fi
+
+# Command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then
+  . '/opt/google-cloud-sdk/completion.bash.inc';
+fi
+
+if [ -f '/home/greyb/.gvm/scripts/gvm' ]; then 
+  . '/home/greyb/.gvm/scripts/gvm'
+fi
