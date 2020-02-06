@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -ef -o pipefail
+
+if [ -z "$1" ]; then
+   echo "Usage: git-branches-by-author <author>"
+   exit 1
+fi
+
+git for-each-ref --format=" %(authorname) %09 %(refname)" --sort=authorname | \
+    egrep -i "$1" | \
+    awk {'print $3'} | \
+    sed -E "/(refs\/heads|HEAD)/d" | \
+    sed -E "s/refs\/remotes\/origin\///"
