@@ -140,3 +140,6 @@ if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/p
 if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
 
 [[ -s "/home/greyb/.gvm/scripts/gvm" ]] && source "/home/greyb/.gvm/scripts/gvm"
+
+# The next line updates PATH to add bin
+PATH="$HOME/bin:$PATH"
