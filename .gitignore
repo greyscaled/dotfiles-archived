@@ -1,8 +1,9 @@
 # Items in ~ to ignore. These shouldn't have to be individually listed if using
-# `config config --local status.showUntrackedFiles` no setting. However, it's
+# `config config --local status.showUntrackedFiles no` setting. However, it's
 # not a bad idea to add them for an extra precaution.
 .bash_history
 .bash_logout
+.cache
 .pki
 
 # Ignore clone of dotfiles repo to avoid recursion
