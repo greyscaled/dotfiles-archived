@@ -43,6 +43,7 @@ apt install -y \
     npm \
     peek \
     tig \
+    tree \
     vim \
     xclip
 
