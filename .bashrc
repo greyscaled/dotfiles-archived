@@ -127,8 +127,11 @@ parse_git_branch() {
 }
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-# Coder NAMESPACE Environment Variable
+# Coder Environment Variables
+export GOOGLE_PROJECT_ID="coder-dev-1"
 export NAMESPACE="coder-greyb-namespace"
+
+
 
 if [ -f '/home/greyb/.bash_path' ]; then
     . $HOME/.bash_path
