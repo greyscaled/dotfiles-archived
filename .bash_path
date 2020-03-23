@@ -21,3 +21,6 @@ fi
 if [ -f '/home/greyb/.gvm/scripts/gvm' ]; then 
   . '/home/greyb/.gvm/scripts/gvm'
 fi
+
+# kubectl autocompletion
+source <(kubectl completion bash)
