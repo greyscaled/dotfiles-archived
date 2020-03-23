@@ -6,10 +6,6 @@
 	editor = vim
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[url "git@gh.coder-internal.com:"]
-	insteadOf = https://git.coder-internal.com/
-[url "git@gh.coder-internal.com:"]
-	insteadOf = https://gh.coder-internal.com/
 [mergetool]
 	prompt = false
 	keepBackup = false
@@ -19,5 +15,6 @@
 [commit]
 	gpgsign = true
 [alias]
+	clbranches = "! git branch -d $(git branch --merged=master | grep -v master)"
 	f = "! git commit --fixup $(git log --pretty='%H' -1 --invert-grep --grep 'fixup! ')"
 	fs = "!f() { git commit --fixup :/$1 ; }; f"
