@@ -18,3 +18,4 @@
 	clbranches = "! git branch -d $(git branch --merged=master | grep -v master)"
 	f = "! git commit --fixup $(git log --pretty='%H' -1 --invert-grep --grep 'fixup! ')"
 	fs = "!f() { git commit --fixup :/$1 ; }; f"
+	root = rev-parse --show-toplevel
