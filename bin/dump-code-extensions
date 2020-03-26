@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script dumps a list of installed VS Code extensions in a file located
+# at ~/.vscode-extensions. It requires the command code be available
+
+set -euo pipefail
+
+code --list-extensions > ~/.vscode-extensions
+
