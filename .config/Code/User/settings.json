@@ -13,6 +13,9 @@
   "editor.formatOnType": false,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "semanticHighlighting": true
+  },
   "editor.trimAutoWhitespace": true,
   "[go]": {
     "editor.tabSize": 4
