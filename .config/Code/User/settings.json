@@ -1,5 +1,15 @@
 {
   "breadcrumbs.enabled": true,
+  "cSpell.enabledLanguageIds": [
+    "json",
+    "jsonc",
+    "markdown",
+    "plaintext",
+    "restructuredtext",
+    "text",
+    "yaml",
+    "yml"
+  ],
   "diffEditor.renderSideBySide": false,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
