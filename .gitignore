@@ -5,6 +5,7 @@
 .bash_logout
 .cache
 .pki
+.secrets
 
 # Ignore clone of dotfiles repo to avoid recursion
 .cfg
