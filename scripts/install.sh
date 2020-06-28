@@ -47,6 +47,9 @@ apt install -y \
     vim \
     xclip
 
+# Snap installations
+snap install taskbook
+
 # DisplayLink USB Graphics requires dkms
 if [ "$INSTALLATION_TYPE" == "FULL" ]; then
     apt install -y dkms
