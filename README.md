@@ -1,8 +1,10 @@
-# Vapurrmaid's Dotfiles :wrench:
+# Vapurrmaid's Dotfiles (ARCHIVED)
 
 Configurations that should be tracked for consistency across different machines.
 
 > :warning: **Warning**: Some of these configurations may be specific to me and my credentials (such as my username)
+
+> **NOTE** This project has been archived as vapurrmaid's dotfiles have undergone re-architecting.
 
 ## Requirements
 
